@@ -1,0 +1,224 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF000000"
+    tools:context=".MainActivity">
+
+    <!-- Top menu containing title and action buttons -->
+    <LinearLayout
+        android:id="@+id/topMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FAF7F4"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btSelectImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="背景画像選択"
+            android:textColor="#F0B913"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <Spinner
+            android:id="@+id/numberSpinner"
+            android:layout_width="63dp"
+            android:layout_height="40dp"
+            android:background="@drawable/spinner_border"
+            android:spinnerMode="dropdown" />
+
+        <ImageView
+            android:id="@+id/ivUndo"
+            android:layout_width="50dp"
+            android:layout_height="38dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_undo"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/ivRedo"
+            android:layout_width="50dp"
+            android:layout_height="38dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_redo"
+            tools:ignore="ContentDescription" />
+
+        <Button
+            android:id="@+id/bt_complete"
+            android:layout_width="85dp"
+            android:layout_height="47dp"
+            android:background="@android:color/transparent"
+            android:text="完了"
+            android:textColor="#F0B913"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+    <!-- Drawing view where the user can draw or paint -->
+
+    <com.example.rgbmems_smartphoneapp.DrawingView
+        android:id="@+id/drawingView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#00000000"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@id/trBottomMenu"
+        app:layout_constraintEnd_toStartOf="@id/placeholderView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topMenu"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <View
+        android:id="@+id/placeholderView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintWidth_percent="0.25"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_gravity="center|end"
+        android:gravity="end"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/trBottomMenu"
+        app:layout_constraintEnd_toEndOf="@+id/main"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toStartOf="@+id/main"
+        app:layout_constraintTop_toTopOf="@+id/topMenu"
+        app:layout_constraintVertical_bias="0.5">
+
+        <TextView
+            android:id="@+id/ivDirection"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:rotation="90"
+            android:text="上向き"
+            android:textColor="#FFA500"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+
+    <!-- SeekBar for adjusting brush thickness -->
+    <TableRow
+        android:id="@+id/trDetailMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:elevation="2dp"
+        android:gravity="bottom|center_vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/trBottomMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <SeekBar
+                android:id="@+id/seekBarThickness"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:background="@color/gray"
+                android:max="50"
+                android:progressDrawable="@drawable/custom_seekbar_progress"
+                android:thumb="@drawable/custom_seekbar_thumb"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </TableRow>
+
+    <!-- Bottom menu containing drawing tools -->
+    <TableRow
+        android:id="@+id/trBottomMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:background="#FAF7F4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/ivPencil"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:padding="6dp"
+            app:srcCompat="@drawable/ic_pen"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/ivEraser"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:padding="6dp"
+            app:srcCompat="@drawable/ic_eraser"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/ivPenThickness"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:padding="6dp"
+            app:srcCompat="@drawable/ic_pen_thickness"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/ivSelectColor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:padding="6dp"
+            app:srcCompat="@drawable/ic_color_picker"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/ivChangeResolution"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:padding="6dp"
+            app:srcCompat="@drawable/ic_change_resolution"
+            tools:ignore="ContentDescription" />
+
+    </TableRow>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
