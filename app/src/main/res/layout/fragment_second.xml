@@ -10,9 +10,10 @@
     <!-- Top menu containing title and action buttons -->
     <LinearLayout
         android:id="@+id/topMenu"
+        android:elevation="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FAF7F4"
+        android:background="@color/white"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="8dp"
@@ -74,17 +75,16 @@
         android:layout_height="0dp"
         android:background="#00000000"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@id/trBottomMenu"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/placeholderView"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/topMenu"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <View
         android:id="@+id/placeholderView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@color/white"
         app:layout_constraintWidth_percent="0.25"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -161,10 +161,9 @@
     <!-- Bottom menu containing drawing tools -->
     <TableRow
         android:id="@+id/trBottomMenu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:background="#FAF7F4"
+        android:layout_width="414dp"
+        android:layout_height="73dp"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -207,16 +206,6 @@
             android:background="@android:color/transparent"
             android:padding="6dp"
             app:srcCompat="@drawable/ic_color_picker"
-            tools:ignore="ContentDescription" />
-
-        <ImageView
-            android:id="@+id/ivChangeResolution"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:padding="6dp"
-            app:srcCompat="@drawable/ic_change_resolution"
             tools:ignore="ContentDescription" />
 
     </TableRow>

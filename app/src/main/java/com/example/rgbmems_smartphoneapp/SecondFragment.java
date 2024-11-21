@@ -191,6 +191,10 @@ public class SecondFragment extends Fragment {
                 hideSeekBar();
             }
         });
+        bindView.placeholderView.setOnClickListener(v -> {
+            toggleMenus();
+            hideSeekBar();
+        });
         bindView.drawingView.setOnTouchListener((v, event) -> handleOnTouch(event));
         bindView.btComplete.setOnClickListener(v -> showConfirmationDialog());
         bindView.drawingView.setToolMode(toolMode);
@@ -294,9 +298,6 @@ public class SecondFragment extends Fragment {
                 float endY = event.getY();
                 float distanceX = Math.abs(endX - startX);
                 float distanceY = Math.abs(endY - startY);
-                if (distanceX < TAP_THRESHOLD && distanceY < TAP_THRESHOLD) {
-                    toggleMenus();
-                }
                 break;
         }
         return true;
